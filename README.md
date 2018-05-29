@@ -12,6 +12,7 @@ testing accuracy is 50%.
 In order to train the network with other dataset, it is required to:
 All the images in the dataset are divided into folders structured as follows: (a script for each dataset is
 executed to correctly form the directories.)
+
 Under dataset name,
 - 0: Contains all images labelled as “angry”.
 - 1: Contains all images labelled as “disgust”.
@@ -20,6 +21,7 @@ Under dataset name,
 - 4: Contains all images labelled as “neutral”.
 - 5: Contains all images labelled as “sad”.
 - 6: Contains all images labelled as “surprised”.
+
 Once we have this structure, “generate_csv.py” is executed with this path to get the csv files with the 
 labels and the calculated facial landmark distances.
 
