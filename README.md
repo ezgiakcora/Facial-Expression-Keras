@@ -3,6 +3,9 @@ The aim of this project is to recognize facial expression from a video streaming
 It takes pictures or webcam video as input. It detects all faces in each frame, and then classifies the 
 expressions to one of the 7 classes: Angry, Disgusted, Neutral, Sad, Happy, Surprised and Fear. 
 
+The algorithm is based on extracting 68 facial landmarks with dlib and use the eucledian distance between
+them as 68x68 array and use them as feature in the network. 
+
 There exist a confusion between sad/neutral and fear/surprised in this version. With more training data,
 it could be possible to distinguish them. 
 
