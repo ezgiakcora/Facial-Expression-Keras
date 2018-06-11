@@ -28,6 +28,9 @@ Under dataset name,
 Once we have this structure, “generate_csv.py” is executed with this path to get the csv files with the 
 labels and the calculated facial landmark distances.
 
+To download the csv file used in this repository: https://www.dropbox.com/s/bpy7y2erk2bpvgr/JAFFE_CK.csv?dl=0
+Place it under "data" folder before running "NN.py".
+
 Used libraries:
 - Keras + Tensorflow
 - dlib
