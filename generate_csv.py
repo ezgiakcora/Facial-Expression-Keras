@@ -106,14 +106,11 @@ def generate_csv(dirName, csvName):
 
 # ---------------------------------------------------------------------------------------------------
 
-training_csvName = "trump.csv"
-training_dirName = './trump/*.jpg'
-generate_csv(training_dirName, training_csvName)
-'''
-testing_csvName = "testing_JAFFE.csv"
-testing_dirName = '../data/JAFFE/*/*'
+
+testing_csvName = "JAFFE_CK.csv"
+testing_dirName = '../data/CK_JAFFE/*/*'
 generate_csv(testing_dirName, testing_csvName)
-'''
+
 print("Success: CSV files are generated!")
 
 # ---------------------------------------------------------------------------------------------------

@@ -20,7 +20,7 @@ from PIL import Image
 from numpy.random import seed
 from sklearn.metrics import confusion_matrix
 import matplotlib.pyplot as plt
-
+from sklearn.model_selection import train_test_split
 
 num_classes = 7 #'Angry','Disgust', 'Fear', 'Happy', 'Neutral', Sad', 'Surprise'
 batch_size = 64
@@ -30,7 +30,8 @@ seed(8)
 
 # --------------------------------------------------------------------
 # Data preperation from csv file
-def prepare_data(fileName, isTraining):
+def prepare_data(fileName):
+	X, Y = [], []
 	x_train, y_train, x_test, y_test = [], [], [], []
 	with open(fileName) as f:
 		content = f.readlines()
@@ -46,35 +47,32 @@ def prepare_data(fileName, isTraining):
 
 			emotion = keras.utils.to_categorical(emotion, num_classes)
 
-			if(isTraining):
-				y_train.append(emotion)
-				x_train.append(val)
-			else:
-				y_test.append(emotion)
-				x_test.append(val)
+			X.append(val)
+			Y.append(emotion)
+				
+		x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size=0.33, random_state=4)
+
+		print ("********Training set size: ", str(len(x_train)))
+
+		x_train = np.array(x_train)
+		y_train = np.array(y_train)
 		
-		if(isTraining):
-			# Normalization of the training data
-			x_train = np.array(x_train)
-			y_train = np.array(y_train)
+		
+		minmax = preprocessing.MinMaxScaler()
+		x_train = minmax.fit_transform(x_train)
+		
+		x_test = np.array(x_test)
+		y_test = np.array(y_test)
 
-			minmax = preprocessing.MinMaxScaler()
-			x_train = minmax.fit_transform(x_train)
-			return x_train, y_train
+		# Normalization of the testing data   
+		minmax = preprocessing.MinMaxScaler()
+		x_test = minmax.fit_transform(x_test)
 
-		else: 
-			x_test = np.array(x_test)
-			y_test = np.array(y_test)
-
-			# Normalization of the testing data   
-			minmax = preprocessing.MinMaxScaler()
-			x_test = minmax.fit_transform(x_test)
-			return x_test, y_test
+		return x_train, y_train, x_test, y_test
 
 # --------------------------------------------------------------------
 # Training and test data preperation  
-x_train, y_train = prepare_data("./data/training_CK.csv", 1)
-x_test, y_test = prepare_data("./data/testing_JAFFE.csv", 0)
+x_train, y_train, x_test, y_test = prepare_data("./data/JAFFE_CK.csv")
 
 print ("Training set size: ", str(len(x_train)))
 print ("Test set size: ", str(len(x_test)))
