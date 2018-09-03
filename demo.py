@@ -14,13 +14,10 @@ cap = cv2.VideoCapture(0)
 
 #-----------------------------
 #face expression recognizer initialization
-usePretrained = 1  # change this to check your own model
-if(usePretrained == 1):
-	model = model_from_json(open("./pretrained-model/model.json", "r").read())
-	model.load_weights('./pretrained-model/model.h5') #load weights
-else:
-	model = model_from_json(open("./model/model.json", "r").read())
-	model.load_weights('./model/model.h5') #load weights
+# Using pretrained model
+model = model_from_json(open("./model/model.json", "r").read())
+model.load_weights('./model/model.h5') #load weights
+
 #-----------------------------
 
 emotions = ( 'Angry' , 'Disgust' , 'Fear' , 'Happy'  , 'Neutral' ,  'Sad' , 'Surprise')

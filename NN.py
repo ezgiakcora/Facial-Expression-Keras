@@ -154,8 +154,8 @@ print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
 
 # --------------------------------------------------------------------
 # Save the model and the weights 
-model_json = model.to_json()
-with open("./model/model.json", "w") as json_file:
-    json_file.write(model_json)
-model.save_weights("./model/model.h5")
-print("Saved model to disk")
+#model_json = model.to_json()
+#with open("./model/model.json", "w") as json_file:
+#    json_file.write(model_json)
+#model.save_weights("./model/model.h5")
+#print("Saved model to disk")
