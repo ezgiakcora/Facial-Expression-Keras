@@ -9,8 +9,8 @@ them as 68x68 array and use them as feature in the network.
 There exist a confusion between sad/neutral and fear/surprised in this version. With more training data,
 it could be possible to distinguish them. 
 
-The network is trained on CK+ dataset and tested on JAFFE dataset. The trainin accuracy is 96.1% where the 
-testing accuracy is 50%.
+The network is trained and tested on a mixture of CK+ and JAFFE datasets. The training accuracy is 92.5% where the 
+testing accuracy is 84%.
 
 In order to train the network with other dataset, it is required to:
 All the images in the dataset are divided into folders structured as follows: (a script for each dataset is
